@@ -41,9 +41,9 @@ void printTable(table t) {
  * 放入元素
  * @return 更新的表
  */
-table insertItem(table t, int item, int index) {
+table insertItemByIndex(table t, int item, int index) {
     // 插入的位置不存在或者插入的位置比t.length + 1还大
-    if (index < 0 || index > t.length + 1) {
+    if (index < 1 || index > t.length + 1) {
         printf("插入的位置有问题\n");
         return t;
     }
@@ -66,6 +66,24 @@ table insertItem(table t, int item, int index) {
     return t;
 }
 
+/**
+ * 删除指定位置的元素
+ * 遍历找到目标元素，其后续所有元素前移
+ * @return 更新后的表
+ */
+table deleteItemByIndex(table t, int index) {
+    // 删除的位置无效
+    if (index < 1 || index > t.length) {
+        printf("被删除元素的位置有误");
+        return t;
+    }
+    // 后续元素前移
+    for (int i = index; i < t.length; i++) {
+        t.head[i-1] = t.head[i];
+    }
+    t.length--;
+    return t;
+}
 int main() {
     int i;
     table t = initTable();
@@ -76,7 +94,10 @@ int main() {
     }
     printf("顺序表中存储的元素是：\n");
     // 向顺序表插入元素
-    table insertedTable = insertItem(t, 6, 3);
+    table insertedTable = insertItemByIndex(t, 6, 3);
     printTable(insertedTable);
+    table deletedTable = deleteItemByIndex(insertedTable, 1);
+    printf("删除后的元素：\n");
+    printTable(deletedTable);
     return 0;
 }
