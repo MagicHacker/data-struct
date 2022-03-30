@@ -84,6 +84,19 @@ table deleteItemByIndex(table t, int index) {
     t.length--;
     return t;
 }
+/**
+ * 查询给定元素位置
+ * @return
+ */
+int queryItem(table t, int item) {
+    for (int i = 0; i < t.length; i++) {
+        if (t.head[i] == item) {
+            return i + 1;
+        }
+    }
+    // 没找到返回-1
+    return -1;
+}
 int main() {
     int i;
     table t = initTable();
@@ -99,5 +112,7 @@ int main() {
     table deletedTable = deleteItemByIndex(insertedTable, 1);
     printf("删除后的元素：\n");
     printTable(deletedTable);
+    int index = queryItem(deletedTable, 4);
+    printf("查找元素位置:%d", index);
     return 0;
 }

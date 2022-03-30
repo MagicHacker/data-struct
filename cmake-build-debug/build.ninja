@@ -51,7 +51,7 @@ build cmake_object_order_depends_target_index: phony || CMakeFiles/index.dir
 
 build CMakeFiles/index.dir/sequence-list/index.c.o: C_COMPILER__index_Debug /Applications/vscode/data-struct/sequence-list/index.c || cmake_object_order_depends_target_index
   DEP_FILE = CMakeFiles/index.dir/sequence-list/index.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu11
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.1 -std=gnu11
   OBJECT_DIR = CMakeFiles/index.dir
   OBJECT_FILE_DIR = CMakeFiles/index.dir/sequence-list
   TARGET_COMPILE_PDB = CMakeFiles/index.dir/
@@ -66,7 +66,7 @@ build CMakeFiles/index.dir/sequence-list/index.c.o: C_COMPILER__index_Debug /App
 # Link the executable index
 
 build index: C_EXECUTABLE_LINKER__index_Debug CMakeFiles/index.dir/sequence-list/index.c.o
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.1
   OBJECT_DIR = CMakeFiles/index.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -108,7 +108,7 @@ build cmake_object_order_depends_target_data_struct: phony || CMakeFiles/data_st
 
 build CMakeFiles/data_struct.dir/Linked-list/simple-linked-list.c.o: C_COMPILER__data_struct_Debug /Applications/vscode/data-struct/Linked-list/simple-linked-list.c || cmake_object_order_depends_target_data_struct
   DEP_FILE = CMakeFiles/data_struct.dir/Linked-list/simple-linked-list.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu11
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.1 -std=gnu11
   OBJECT_DIR = CMakeFiles/data_struct.dir
   OBJECT_FILE_DIR = CMakeFiles/data_struct.dir/Linked-list
   TARGET_COMPILE_PDB = CMakeFiles/data_struct.dir/
@@ -116,7 +116,7 @@ build CMakeFiles/data_struct.dir/Linked-list/simple-linked-list.c.o: C_COMPILER_
 
 build CMakeFiles/data_struct.dir/sequence-list/index.c.o: C_COMPILER__data_struct_Debug /Applications/vscode/data-struct/sequence-list/index.c || cmake_object_order_depends_target_data_struct
   DEP_FILE = CMakeFiles/data_struct.dir/sequence-list/index.c.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu11
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.1 -std=gnu11
   OBJECT_DIR = CMakeFiles/data_struct.dir
   OBJECT_FILE_DIR = CMakeFiles/data_struct.dir/sequence-list
   TARGET_COMPILE_PDB = CMakeFiles/data_struct.dir/
@@ -131,7 +131,7 @@ build CMakeFiles/data_struct.dir/sequence-list/index.c.o: C_COMPILER__data_struc
 # Link the executable data_struct
 
 build data_struct: C_EXECUTABLE_LINKER__data_struct_Debug CMakeFiles/data_struct.dir/Linked-list/simple-linked-list.c.o CMakeFiles/data_struct.dir/sequence-list/index.c.o
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -mmacosx-version-min=12.1
   OBJECT_DIR = CMakeFiles/data_struct.dir
   POST_BUILD = :
   PRE_LINK = :
