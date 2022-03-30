@@ -97,6 +97,15 @@ int queryItem(table t, int item) {
     // 没找到返回-1
     return -1;
 }
+/**
+ * 修改元素
+ * @return
+ */
+table modifyTable(table t, int item, int newItem) {
+    int index = queryItem(t, item);
+    t.head[index - 1] = newItem;
+    return t;
+}
 int main() {
     int i;
     table t = initTable();
@@ -114,5 +123,7 @@ int main() {
     printTable(deletedTable);
     int index = queryItem(deletedTable, 4);
     printf("查找元素位置:%d", index);
+    table modifyT = modifyTable(deletedTable, 6, 9);
+    printTable(modifyT);
     return 0;
 }
