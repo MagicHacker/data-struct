@@ -3,8 +3,9 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 // 宏定义Size，顺序表申请的空间
-#define Size 5;
+#define SIZE 5;
 
 // 定义顺序表结构体
 typedef struct table {
@@ -16,7 +17,7 @@ typedef struct table {
     int size;
 }table;
 
-// 初始化顺序表
+// 初始化顺序表--空表
 table initTable() {
     table t;
     // 动态申请空间 --空表
@@ -26,7 +27,7 @@ table initTable() {
         exit(0);
     }
     t.length = 0;
-    t.size = Size;
+    t.size = SIZE;
     return t;
 }
 
@@ -38,12 +39,95 @@ void printTable(table t) {
     printf("\n");
 }
 
+/**
+ * 查询表中元素下标
+ * @param t 顺序表
+ * @param item 元素
+ * @return 下标
+ */
+int searchIndex(table t, int item) {
+    for(int i = 0; i < t.length; i++) {
+        if (t.list[i] == item) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * 根据下标删除表元素
+ * @param t 表
+ * @param index 下标
+ * @return 删除元素后的表
+ * 后续元素前移1位即可
+ */
+table deleteByIndex(table t, int index) {
+    if (index > t.length || index < -1) {
+        printf("删除的位置有误");
+        exit(0);
+    }
+    for(int i = index + 1; i < t.length; i++) {
+        t.list[i - 1] = t.list[i];
+    }
+    t.length--;
+    return t;
+}
+
+/**
+ * 根据元素删除表元素
+ * @param t 表
+ * @param item 待删除元素
+ * @return 删除元素后的表
+ */
+table deleteByItem(table t, int item) {
+    int index = searchIndex(t, item);
+    table deletedTable = deleteByIndex(t, index);
+    return deletedTable;
+}
+
+/**
+ * 判断表是否为空表
+ * @param t 表
+ * @return 0-空 1-非空
+ */
+int tableIsEmpty(table t) {
+    if (t.length == 0) {
+        return 0;
+    }
+    return 1;
+}
+
+/**
+ * 删除整张表
+ * @param t 表
+ * @return 是否成功 0-成功，1-失败
+ */
+int dropTable(table t) {
+    free(t.list);
+    t.list = NULL;
+    t.length = 0;
+    int flag = tableIsEmpty(t);
+    return flag;
+}
+
 int main() {
     table oriTable = initTable();
     // 向顺序表添加元素
-    for(int i = 0;i < Size i++) {
+    for(int i = 0;i < SIZE i++) {
         oriTable.list[i] = i;
         oriTable.length++;
     }
+    // 打印顺序表
     printTable(oriTable);
+    // 查找元素的位置
+    int index = searchIndex(oriTable, 3);
+    printf("元素下标:%d\n", index);
+    // 根据下标删除元素
+//    table deletedTable = deleteByIndex(oriTable, index);
+    // 删除某个元素
+    table deletedTable = deleteByItem(oriTable, 3);
+    printTable(deletedTable);
+    // 销毁表
+    int flag = dropTable(oriTable);
+    printf("删除成功:%d", flag);
 }
