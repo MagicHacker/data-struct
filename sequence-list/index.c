@@ -110,6 +110,39 @@ int dropTable(table t) {
     return flag;
 }
 
+/**
+ * 添加元素
+ * @param t 表
+ * @param item 元素
+ * @param index 下标
+ * @return 添加后的表
+ */
+table insertTable(table t, int item, int index) {
+    // 插入位置是否正确
+    if (index < 0 || index > t.length + 1) {
+        printf("插入的位置有问题");
+        exit(0);
+    }
+    // 表是否有多余空间插入
+    if (t.length == t.size) {
+        // 申请扩容
+        t.list = (int *) realloc(t.list, (t.size + 1) * sizeof (int));
+        if (!t.list) {
+            printf("存储分配失败");
+            return t;
+        }
+        t.size + 1;
+    }
+    // 后续元素后移一位
+    for(int i = t.length - 1; i >= index; i--) {
+        t.list[i + 1] = t.list[i];
+    }
+    // 插入元素
+    t.list[index] = item;
+    t.length++;
+    return t;
+}
+
 int main() {
     table oriTable = initTable();
     // 向顺序表添加元素
@@ -122,12 +155,16 @@ int main() {
     // 查找元素的位置
     int index = searchIndex(oriTable, 3);
     printf("元素下标:%d\n", index);
-    // 根据下标删除元素
+//    // 根据下标删除元素
 //    table deletedTable = deleteByIndex(oriTable, index);
-    // 删除某个元素
-    table deletedTable = deleteByItem(oriTable, 3);
-    printTable(deletedTable);
-    // 销毁表
-    int flag = dropTable(oriTable);
-    printf("删除成功:%d", flag);
+//    // 删除某个元素
+//    table deletedTable = deleteByItem(oriTable, 3);
+//    printTable(deletedTable);
+//    // 销毁表
+//    int flag = dropTable(oriTable);
+//    printf("删除成功:%d", flag);
+//    // 插入元素
+    table insertedTable = insertTable(oriTable, 7, 0);
+    // 打印
+    printTable(insertedTable);
 }
