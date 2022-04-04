@@ -143,6 +143,24 @@ table insertTable(table t, int item, int index) {
     return t;
 }
 
+/**
+ * 替换元素
+ * @param t 表
+ * @param item 被替换元素
+ * @param newItem 替换元素
+ * @param index 替换的位置
+ * @return 替换后的表
+ */
+table modifyTable(table t, int item, int newItem, int index) {
+    int seIndex = 0;
+    if (index < 0) {
+        seIndex = searchIndex(t, item);
+    } else {
+        seIndex = index;
+    }
+    t.list[seIndex] = newItem;
+    return t;
+}
 int main() {
     table oriTable = initTable();
     // 向顺序表添加元素
@@ -167,4 +185,12 @@ int main() {
     table insertedTable = insertTable(oriTable, 7, 0);
     // 打印
     printTable(insertedTable);
+    // 替换元素
+    table modifiedTable = modifyTable(insertedTable, 7, 6, -1);
+    // 打印
+    printTable(modifiedTable);
+    // 按位置替换元素
+    table tableByIndex = modifyTable(insertedTable, NULL, 9, 0);
+    // 打印
+    printTable(tableByIndex);
 }
