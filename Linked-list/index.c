@@ -24,6 +24,7 @@ LinkNode * initLink() {
     LinkNode * p = NULL;
     // 定义首元节点 节点类型是LinkNode结构体
     // malloc申请一个节点空间
+    // firstNode是一个指针，指向的是结构体LinkNode的实例
     LinkNode * firstNode = (LinkNode *) malloc(sizeof (LinkNode));
     // 初始化首元节点
     firstNode->elem = 0;
