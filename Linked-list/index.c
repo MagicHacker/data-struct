@@ -7,6 +7,7 @@
  * 定义单链表节点
  * 指针域指向的是下一个节点整体
  * 所以next指针类型也为结构体
+ * 即结构体指针，用于指向一个结构体
  */
 typedef struct LinkNode {
     int elem;
