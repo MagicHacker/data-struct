@@ -40,7 +40,7 @@ LinkNode * initLink() {
         // 将首元节点链接上node节点
         firstNode->next = node;
         // 指针firstNode每次都指向新链表的的最后一个节点
-        firstNode = firstNode->next;
+        firstNode = node;
     }
     // 返回建立的节点，返回头指针p即可
     return p;
