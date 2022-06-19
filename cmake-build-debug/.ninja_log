@@ -3,12 +3,6 @@
 0	68	1649261100021224473	CMakeFiles/index.dir/Linked-list/index.c.o	6cb16286dcd8b224
 0	75	1649260000649707301	CMakeFiles/data_struct.dir/sequence-list/index.c.o	19c149d9c5b2c7e7
 0	70	1649260000644136600	CMakeFiles/data_struct.dir/Linked-list/index.c.o	3286be2e8a710161
-0	68	1649261227546695632	CMakeFiles/Linked-list.dir/Linked-list/index.c.o	ed475c0b11fb39b2
-69	128	1649261227607257269	Linked-list	dd2e1e6efba7c27f
-1	94	1649263877327471417	CMakeFiles/index.dir/sequence-list/index.c.o	39a7372bc263d3ff
-2	495	1649585563264480766	CMakeFiles/Linked-list.dir/Linked-list/index.c.o	ed475c0b11fb39b2
-496	629	1649585563407839270	Linked-list	dd2e1e6efba7c27f
-2	72	1649597826319748241	CMakeFiles/Linked-list.dir/Linked-list/index.c.o	ed475c0b11fb39b2
-73	131	1649597826381365655	Linked-list	dd2e1e6efba7c27f
 0	58	1649597839128152787	CMakeFiles/Linked-list.dir/Linked-list/index.c.o	ed475c0b11fb39b2
 58	117	1649597839187339901	Linked-list	dd2e1e6efba7c27f
+1	94	1649263877327471417	CMakeFiles/index.dir/sequence-list/index.c.o	39a7372bc263d3ff
