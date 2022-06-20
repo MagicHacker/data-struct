@@ -8,17 +8,17 @@
 
 // 表结构体
 typedef struct List {
-   // 动态数组
-   int * data;
-   // 表长度
-   int length;
-   // 表容量
-   int size;
+    // 动态数组
+    int *data;
+    // 表长度
+    int length;
+    // 表容量
+    int size;
 }List;
 // 初始化空表
 List initList() {
     List list;
-    // 构造空表，动态申请空间
+    // 动态申请空间
     list.data = (int*)malloc(Size * sizeof(int));
     if (!list.data) {
         printf("表初始化失败");
@@ -31,7 +31,7 @@ List initList() {
 // 打印表
 void printList(List list) {
     for (int i = 0; i < list.length; i++) {
-        printf("%d\n", list.data[i]);
+        printf("%d", list.data[i]);
     }
 }
 // 判断是否为空表
@@ -52,7 +52,7 @@ int listLength() {
 }
 int main() {
     List list = initList();
-    // 向空表添加元素
+    // 空表塞入数据
     for (int i = 0; i < Size; i++) {
         list.data[i] = i;
         list.length++;
