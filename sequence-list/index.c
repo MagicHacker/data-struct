@@ -49,7 +49,14 @@ int getItem(List list, int index) {
     return list.data[index];
 }
 // 查找元素位置
-void findItem(List list, int item) {}
+int findItem(List list, int item) {
+    for (int i = 0; i < list.length; i++) {
+        if (list.data[i] == item) {
+            return i;
+        }
+    }
+    return -1;
+}
 // 插入元素
 void listInsert(List list, int index, int item) {}
 // 删除元素
@@ -69,5 +76,6 @@ int main() {
     printf("是否为空表%d\n", listIsEmpty(list));
     printf("元素个数%d\n", listLength(list));
     printf("获取元素%d", getItem(list, 1));
+    printf("查找元素位置%d", findItem(list, 9));
     return 0;
 }
