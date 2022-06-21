@@ -3,7 +3,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 #define Size 10
 
 // 表结构体
@@ -35,7 +35,10 @@ void printList(List list) {
     }
 }
 // 判断是否为空表
-void listIsEmpty() {}
+bool listIsEmpty(List list) {
+    // 1-空表
+    return list.length == 0;
+}
 // 清空表
 void clearList() {}
 // 获取元素
@@ -57,6 +60,7 @@ int main() {
         list.data[i] = i;
         list.length++;
     }
-    printList(list);
+    // printList(list);
+    printf("是否为空表%d", listIsEmpty(list));
     return 0;
 }
