@@ -50,8 +50,8 @@ void listInsert() {}
 // 删除元素
 void listDelete() {}
 // 获取元素个数
-int listLength() {
-    return 0;
+int listLength(List list) {
+    return list.length;
 }
 int main() {
     List list = initList();
@@ -61,6 +61,7 @@ int main() {
         list.length++;
     }
     // printList(list);
-    printf("是否为空表%d", listIsEmpty(list));
+    printf("是否为空表%d\n", listIsEmpty(list));
+    printf("元素个数%d\n", listLength(list));
     return 0;
 }
