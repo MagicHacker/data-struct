@@ -39,8 +39,6 @@ bool listIsEmpty(List list) {
     // 1-空表
     return list.length == 0;
 }
-// 清空表
-void clearList(List list) {}
 // 获取元素
 int getItem(List list, int index) {
     if (index < 0) {
@@ -58,7 +56,24 @@ int findItem(List list, int item) {
     return -1;
 }
 // 插入元素
-void listInsert(List list, int index, int item) {}
+List listInsert(List list, int index, int item) {
+    if (index < 0) {
+        printf("插入位置无效");
+        exit(0);
+    }
+    if (list.length == list.size) {
+        // 申请空间
+        list.data = (int*)realloc(list.data, (list.size + 1) * sizeof(int));
+        list.size += 1;
+    }
+    // 先后移
+    for (int i = list.length - 1; i >= index; i--) {
+        list.data[i + 1] = list.data[i];
+    }
+    list.data[index] = item;
+    list.length++;
+    return list;
+}
 // 删除元素
 void listDelete(List list, int index) {
     if (index < 0) {
@@ -67,12 +82,10 @@ void listDelete(List list, int index) {
     if (list.length == 0) {
         printf("空表");
     }
-    if (index != list.length - 1) {
-        for (int i = index; i < list.length; i++) {
-            list.data[i] = list.data[i + 1];
-        }
-        list.length--;
+    for (int i = index; i < list.length; i++) {
+        list.data[i] = list.data[i + 1];
     }
+    list.length--;
 }
 // 获取元素个数
 int listLength(List list) {
@@ -90,7 +103,9 @@ int main() {
     // printf("获取元素%d", getItem(list, 1));
     // printf("查找元素位置%d", findItem(list, 9));
     // 删除元素
-    listDelete(list, 3);
+    // listDelete(list, 3);
+    // 插入元素
+    listInsert(list, 3, 11);
     printList(list);
     return 0;
 }
