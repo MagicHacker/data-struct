@@ -40,15 +40,20 @@ bool listIsEmpty(List list) {
     return list.length == 0;
 }
 // 清空表
-void clearList() {}
+void clearList(List list) {}
 // 获取元素
-void getItem() {}
-// 查找元素
-void findItem() {}
+int getItem(List list, int index) {
+    if (index < 0) {
+        printf("位置错误，获取失败");
+    }
+    return list.data[index];
+}
+// 查找元素位置
+void findItem(List list, int item) {}
 // 插入元素
-void listInsert() {}
+void listInsert(List list, int index, int item) {}
 // 删除元素
-void listDelete() {}
+void listDelete(List list, int index) {}
 // 获取元素个数
 int listLength(List list) {
     return list.length;
@@ -63,5 +68,6 @@ int main() {
     // printList(list);
     printf("是否为空表%d\n", listIsEmpty(list));
     printf("元素个数%d\n", listLength(list));
+    printf("获取元素%d", getItem(list, 1));
     return 0;
 }
