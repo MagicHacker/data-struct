@@ -60,7 +60,20 @@ int findItem(List list, int item) {
 // 插入元素
 void listInsert(List list, int index, int item) {}
 // 删除元素
-void listDelete(List list, int index) {}
+void listDelete(List list, int index) {
+    if (index < 0) {
+        printf("删除位置不合理");
+    }
+    if (list.length == 0) {
+        printf("空表");
+    }
+    if (index != list.length - 1) {
+        for (int i = index; i < list.length; i++) {
+            list.data[i] = list.data[i + 1];
+        }
+        list.length--;
+    }
+}
 // 获取元素个数
 int listLength(List list) {
     return list.length;
@@ -72,10 +85,12 @@ int main() {
         list.data[i] = i;
         list.length++;
     }
-    // printList(list);
-    printf("是否为空表%d\n", listIsEmpty(list));
-    printf("元素个数%d\n", listLength(list));
-    printf("获取元素%d", getItem(list, 1));
-    printf("查找元素位置%d", findItem(list, 9));
+    // printf("是否为空表%d\n", listIsEmpty(list));
+    // printf("元素个数%d\n", listLength(list));
+    // printf("获取元素%d", getItem(list, 1));
+    // printf("查找元素位置%d", findItem(list, 9));
+    // 删除元素
+    listDelete(list, 3);
+    printList(list);
     return 0;
 }
