@@ -21,8 +21,19 @@ typedef struct LinkNode {
 LinkNode * initByRear() {}
 // 头插法初始化链表
 LinkNode * initByHead() {}
-// 获取元素
-LinkNode getItem() {}
+// 查找元素的位置
+int getItem(LinkNode *link, int item) {
+    LinkNode *p = link;
+    int i = 0;
+    while(p->next) {
+        p = p->next;
+        if (p->data == item) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
 // 删除元素
 LinkNode deleteItem() {}
 // 清空链表
