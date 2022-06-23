@@ -24,6 +24,27 @@ typedef struct LinkNode {
  * 新增结点插到链表尾部
  */
 LinkNode * initByRear() {
+    // 创建头结点
+    LinkNode * head = (LinkNode*)malloc(sizeof(LinkNode));
+    // 头结点指针域
+    head->next = NULL;
+    // 尾指针 始终指向尾结点
+    LinkNode * rear;
+    // 初始指向头结点
+    rear = head;
+    if (head == NULL) {
+        printf("申请空间失败");
+        exit(0);
+    }
+    // 创建链表
+    for (int i = 1; i < Size; i++) {
+        LinkNode * item = (LinkNode*)malloc(sizeof(LinkNode));
+        item->data = i;
+        rear->next = item;
+        // 尾指针指向当前结点
+        rear = item;
+    }
+    return head;
 }
 /**
  * 头插法
@@ -81,7 +102,7 @@ void printLinkList(LinkNode *p) {
     }
 }
 int main() {
-    LinkNode * linkList = initByHead();
+    LinkNode * linkList = initByRear();
     printLinkList(linkList);
     return 0;
 }
