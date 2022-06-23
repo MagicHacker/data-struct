@@ -109,7 +109,19 @@ LinkNode * insertItem(LinkNode *link, int index, int item) {
     return link;
 }
 // 查找元素
-LinkNode findItem() {}
+int findItem(LinkNode *link, int item) {
+    // 临时指针
+    LinkNode * p = link;
+    int i = 1;
+    while(p->next) {
+        p = p->next;
+        if (p->data == item) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
 // 打印链表
 void printLinkList(LinkNode *p) {
     // 可移动指针，初始指向链表
@@ -123,5 +135,6 @@ int main() {
     LinkNode * linkList = initByRear();
     LinkNode * insertedLink = insertItem(linkList, 1, 5);
     printLinkList(linkList);
+    printf("查找的位置%d", findItem(insertedLink, 5));
     return 0;
 }
