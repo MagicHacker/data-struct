@@ -89,7 +89,25 @@ LinkNode deleteItem() {}
 // 清空链表
 void clearLinkList() {}
 // 插入元素
-void insertItem() {}
+LinkNode * insertItem(LinkNode *link, int index, int item) {
+    // 判断插入位置
+    if (index < 0) {
+        printf("插入位置错误");
+        exit(0);
+    }
+    // 临时指针
+    LinkNode * temp = link;
+    // 找到插入的上一个元素
+    for (int i = 0; i < index; i++) {
+        temp = temp->next;
+    }
+    // 创建插入结点
+    LinkNode * node = (LinkNode*)malloc(sizeof(LinkNode));
+    node->data = item;
+    node->next = temp->next;
+    temp->next = node;
+    return link;
+}
 // 查找元素
 LinkNode findItem() {}
 // 打印链表
@@ -103,6 +121,7 @@ void printLinkList(LinkNode *p) {
 }
 int main() {
     LinkNode * linkList = initByRear();
+    LinkNode * insertedLink = insertItem(linkList, 1, 5);
     printLinkList(linkList);
     return 0;
 }
