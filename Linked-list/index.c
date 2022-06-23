@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define Size 5
+
 /**
  * 定义链表节点
  * 每个节点都是LinkNode结构体
@@ -17,10 +19,37 @@ typedef struct LinkNode {
     struct LinkNode * next;
 }LinkNode;
 
-// 尾插法初始化链表
-LinkNode * initByRear() {}
-// 头插法初始化链表
-LinkNode * initByHead() {}
+/**
+ * 尾插法
+ * 新增结点插到链表尾部
+ */
+LinkNode * initByRear() {
+}
+/**
+ * 头插法
+ * 新增结点插到链表头部
+ */
+LinkNode * initByHead() {
+    // 头结点
+    LinkNode * head = (LinkNode*)malloc(sizeof(LinkNode));
+    // 头结点指针域
+    head->next = NULL;
+    if (head == NULL) {
+        printf("申请空间失败");
+        exit(0);
+    }
+    // 创建链表
+    for (int i = 1; i < Size; i++) {
+        LinkNode * item = (LinkNode*)malloc(sizeof(LinkNode));
+        // 数据域
+        item->data = i;
+        // 将当前head指向的地址赋给新元素的指针
+        item->next = head->next;
+        // head指向新元素的地址
+        head->next = item;
+    }
+    return head;
+}
 // 查找元素的位置
 int getItem(LinkNode *link, int item) {
     LinkNode *p = link;
@@ -52,5 +81,7 @@ void printLinkList(LinkNode *p) {
     }
 }
 int main() {
+    LinkNode * linkList = initByHead();
+    printLinkList(linkList);
     return 0;
 }
