@@ -1,5 +1,5 @@
 /**
- * 链表
+ * 单链表
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,7 +85,19 @@ int getItem(LinkNode *link, int item) {
     return -1;
 }
 // 删除元素
-LinkNode deleteItem() {}
+LinkNode * deleteItem(LinkNode *link, int item) {
+    // 快指针
+    LinkNode * head = link->next;
+    // 慢指针
+    LinkNode * temp = link;
+    while(head->data != item) {
+        temp = head;
+        head = head->next;
+    }
+    temp->next = head->next;
+    free(head);
+    return link;
+}
 // 清空链表
 void clearLinkList(LinkNode *link) {
     int i = 0;
@@ -144,9 +156,7 @@ void printLinkList(LinkNode *p) {
 int main() {
     LinkNode * linkList = initByRear();
     LinkNode * insertedLink = insertItem(linkList, 1, 5);
-    // printLinkList(linkList);
-    // printf("查找的位置%d", findItem(insertedLink, 5));
-    clearLinkList(insertedLink);
-    printLinkList(linkList);
+    LinkNode * delLinkList = deleteItem(insertedLink, 2);
+    printLinkList(delLinkList);
     return 0;
 }
