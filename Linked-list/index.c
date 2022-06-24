@@ -87,7 +87,17 @@ int getItem(LinkNode *link, int item) {
 // 删除元素
 LinkNode deleteItem() {}
 // 清空链表
-void clearLinkList() {}
+void clearLinkList(LinkNode *link) {
+    int i = 0;
+    // 临时指针
+    LinkNode *p,*q;
+    p = link->next;
+    while(p != NULL) {
+        q = p->next;
+        free(p);
+        p = q;
+    }
+}
 // 插入元素
 LinkNode * insertItem(LinkNode *link, int index, int item) {
     // 判断插入位置
@@ -134,7 +144,9 @@ void printLinkList(LinkNode *p) {
 int main() {
     LinkNode * linkList = initByRear();
     LinkNode * insertedLink = insertItem(linkList, 1, 5);
+    // printLinkList(linkList);
+    // printf("查找的位置%d", findItem(insertedLink, 5));
+    clearLinkList(insertedLink);
     printLinkList(linkList);
-    printf("查找的位置%d", findItem(insertedLink, 5));
     return 0;
 }
