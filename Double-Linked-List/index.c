@@ -35,6 +35,24 @@ LinkNode * initLink() {
     return head;
 }
 
+// 插入元素
+LinkNode * insertItem(LinkNode * link, int index, int item) {
+    if (index < 0) {
+        printf("插入的位置无效");
+    }
+    // 创建结点
+    LinkNode * node = (LinkNode*)malloc(sizeof(LinkNode));
+    node->prev = NULL;
+    node->data = item;
+    node->next = NULL;
+    // 临时指针
+    LinkNode * temp = link;
+    for (int i = 0; i < index; i++) {
+        temp = temp->next;
+        node->next = temp;
+        temp->prev = node;
+    }
+}
 // 打印链表
 void printLinkList(LinkNode * link) {
     LinkNode * temp = link;
