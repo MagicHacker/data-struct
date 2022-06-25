@@ -70,6 +70,32 @@ LinkNode * insertItem(LinkNode * link, int index, int item) {
     }
     return link;
 }
+// 删除元素
+LinkNode * deleteItem(LinkNode * link, int item) {
+    LinkNode * temp = link;
+    while(temp) {
+        if (temp->data != item) {
+            printf("删除的元素不在链表中");
+            exit(0);
+        } else {
+            // 删除元素是表头
+            if (temp->prev == NULL) {
+                temp->next->prev = NULL;
+                temp->next = NULL;
+                free(temp);
+            } else if (temp->next == NULL) { // 删除的元素是表尾
+                temp->prev->next = NULL;
+                temp->prev = NULL;
+                free(temp);
+            } else {
+                temp->prev->next = temp->next;
+                temp->next->prev = temp->prev;
+                free(temp);
+            }
+        }
+    }
+    return link;
+}
 // 打印链表
 void printLinkList(LinkNode * link) {
     LinkNode * temp = link;
