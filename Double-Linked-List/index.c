@@ -38,20 +38,37 @@ LinkNode * initLink() {
 // 插入元素
 LinkNode * insertItem(LinkNode * link, int index, int item) {
     if (index < 0) {
-        printf("插入的位置无效");
+        printf("插入位置非法");
     }
     // 创建结点
     LinkNode * node = (LinkNode*)malloc(sizeof(LinkNode));
     node->prev = NULL;
     node->data = item;
     node->next = NULL;
-    // 临时指针
-    LinkNode * temp = link;
-    for (int i = 0; i < index; i++) {
-        temp = temp->next;
-        node->next = temp;
-        temp->prev = node;
+    // 插入到表头成为新的表头元素 只需与原表头元素建立双层逻辑关系
+    if (index == 0) {
+        node->next = link;
+        link->prev = node;
+        link = node;
+    } else {
+        // 临时指针
+        LinkNode * temp = link;
+        // 查找位置
+        for (int i = 1; i < index - 1; i++) {
+            temp = temp->next;
+        }
+        // 插到表尾
+        if (temp->next == NULL) {
+            node->prev = temp;
+            temp->next = node;
+        } else {
+            node->next = temp->next;
+            temp->next->prev = node;
+            temp->next = node;
+            node->prev = temp;
+        }
     }
+    return link;
 }
 // 打印链表
 void printLinkList(LinkNode * link) {
