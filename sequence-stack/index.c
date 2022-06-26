@@ -51,7 +51,7 @@ int main() {
         }
     }
     // 出栈
-    // stack = popStack(stack);
+    stack = popStack(stack);
     // 入栈
     stack = pushStack(stack, 7);
     printStack(stack);
