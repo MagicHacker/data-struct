@@ -33,9 +33,9 @@ LinkNode * intLinkNode() {
     return head;
 }
 // 打印链栈
-void printLink(LinkNode * link) {
+void printLink(LinkNode * stack) {
     // 头指针
-    LinkNode * temp = link;
+    LinkNode * temp = stack;
     while(temp) {
         printf("%d", temp->data);
         temp = temp->next;
@@ -50,9 +50,18 @@ LinkNode * pushLink(LinkNode * stack, int item) {
     stack = node;
     return stack;
 }
+// 出栈
+LinkNode * popLink(LinkNode * stack) {
+    // 栈顶指针
+    LinkNode * top = stack;
+    stack = stack->next;
+    free(top);
+    return stack;
+}
 int main() {
     LinkNode * link = intLinkNode();
     LinkNode * pLink = pushLink(link, 7);
-    printLink(pLink);
+    LinkNode * poLink = popLink(pLink);
+    printLink(poLink);
     return 0;
 }
