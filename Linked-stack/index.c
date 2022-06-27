@@ -19,11 +19,11 @@ LinkNode * intLinkNode() {
     LinkNode * head = NULL;
     // 首元结点
     LinkNode * temp = (LinkNode*)malloc(sizeof(LinkNode));
-    temp->data = 0;
+    temp->data = 1;
     temp->next = NULL;
     head = temp;
     // 栈顶在链表头部 采用头插法
-    for (int i = 1; i < Size; i++) {
+    for (int i = 2; i < Size; i++) {
         // 创建结点
         LinkNode * node = (LinkNode*)malloc(sizeof(LinkNode));
         node->data = i;
@@ -41,8 +41,18 @@ void printLink(LinkNode * link) {
         temp = temp->next;
     }
 }
+// 入栈 头插法
+LinkNode * pushLink(LinkNode * stack, int item) {
+    // 创建结点
+    LinkNode * node = (LinkNode*)malloc(sizeof(LinkNode));
+    node->data = item;
+    node->next = stack;
+    stack = node;
+    return stack;
+}
 int main() {
     LinkNode * link = intLinkNode();
-    printLink(link);
+    LinkNode * pLink = pushLink(link, 7);
+    printLink(pLink);
     return 0;
 }
