@@ -30,6 +30,15 @@ QueueNode * pushQueue(QueueNode * rear, int item) {
     // 为后续入队做处理
     return rear;
 }
+
+// 出队
+QueueNode * popQueue(QueueNode * top) {
+    QueueNode * temp = NULL;
+    temp = top->next;
+    top->next = temp->next;
+    free(temp);
+    return top;
+}
 int main() {
     return 0;
 }
