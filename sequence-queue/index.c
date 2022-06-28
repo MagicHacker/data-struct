@@ -16,12 +16,20 @@ int pushQueue(int * a, int rear, int data) {
     return rear;
 }
 // 出队
-void popQueue(int * a, int front, int rear) {
-
+int popQueue(int * a, int front, int rear) {
+    if (front == rear) {
+        printf("队列为空");
+        exit(0);
+    }
+    while(front != rear) {
+        printf("%d", a[front]);
+        front++;
+    }
+    return front;
 }
 // 打印队列
-void printQueue(int * a, int rear) {
-    for (int i = 0; i < rear; i++) {
+void printQueue(int * a, int front, int rear) {
+    for (int i = front; i < rear; i++) {
         printf("%d", a[i]);
     }
 }
@@ -36,6 +44,9 @@ int main() {
     rear = pushQueue(data, rear, 2);
     rear = pushQueue(data, rear, 3);
     rear = pushQueue(data, rear, 4);
-    printQueue(data, rear);
+    // 出队
+    front = popQueue(data, front, rear);
+    // 打印队列
+    printQueue(data, front, rear);
     return 0;
 }
