@@ -27,7 +27,7 @@ QueueNode * pushQueue(QueueNode * rear, int item) {
     node->next = NULL;
     rear->next = node;
     rear = node;
-    // 
+    // 为后续入队做处理
     return rear;
 }
 int main() {
