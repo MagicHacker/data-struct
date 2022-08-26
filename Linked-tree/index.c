@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define NodeNum 7;
 // 二叉树结点
 typedef struct BiTNode {
     // 数据域
@@ -14,7 +15,7 @@ typedef struct BiTNode {
     struct BiTNode * rightChild;
 }BiTNode, * BiTree;
 
-// 手动添加数据
+// 手动构建二叉树
 void createBiTreeByManual(BiTree * T) {
     // 创建根结点
     * T = (BiTNode*)malloc(sizeof(BiTNode));
@@ -34,6 +35,21 @@ void createBiTreeByManual(BiTree * T) {
     (*T)->leftChild->leftChild->rightChild = NULL;
 }
 
+// 动态构建二叉树
+int arr[7] = {1,2,3,4,5,6};
+int index = 0;
+void createBiTreeByAuto(BiTree * T) {
+    if (index == 6) {
+        T = NULL;
+        return;
+    }
+    // 创建结点
+    (*T) = (BiTNode*)malloc(sizeof(BiTNode));
+    (*T)->data = arr[1];
+    index++;
+    createBiTreeByAuto(&((*T)->leftChild));
+    createBiTreeByAuto(&((*T)->rightChild));
+}
 // 后序遍历二叉树 释放内存
 void destroyBiTree(BiTree T) {
     if (T) {
@@ -42,11 +58,18 @@ void destroyBiTree(BiTree T) {
         free(T);
     }
 }
+// 前序遍历
+void preOrder(BiTree T) {
+    if (T) {
+        printf("输出:%d", T->data);
+        preOrder(T->leftChild);
+        preOrder(T->rightChild);
+    }
+}
 int main () {
     BiTree Tree;
-    createBiTreeByManual(&Tree);
-    printf("根节点的左孩子结点为：%d\n", Tree->leftChild->data);
-    printf("根节点的右孩子结点为：%d\n", Tree->rightChild->data);
-    destroyBiTree(Tree);
+    // createBiTreeByManual(&Tree);
+    createBiTreeByAuto(&Tree);
+    preOrder(Tree);
     return 0;
 }
