@@ -42,8 +42,26 @@ void initThreadTree(BiThrTree T) {
     }
 }
 
+// 中序遍历线索二叉树
+void inOrderThreadTree(BiThrTree T) {
+    // 临时指针
+    BiThrTree p;
+    p = T->lchild;
+    while(!p == T) {
+        while(p->LTag == Link) {
+            p = p->lchild;
+            printf("%c", p->data);
+            while(p->RTag == Thread && p->rchild != T) {
+                p = p->rchild;
+                printf("%c", p->data);
+            }
+        }
+        p = p->rchild;
+    }
+}
 int main() {
     BiThrTree T = 's';
-    initThreadTree(BiThrTree T);
+    initThreadTree(T);
+    inOrderThreadTree(T);
     return 0;
 }
