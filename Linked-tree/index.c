@@ -6,70 +6,41 @@
 #include <stdlib.h>
 #define NodeNum 7;
 // 二叉树结点
-typedef struct BiTNode {
+typedef struct BiNode {
     // 数据域
-    int data;
-    // 左树指针
-    struct BiTNode * leftChild;
-    // 右树指针
-    struct BiTNode * rightChild;
-}BiTNode, * BiTree;
+    TElemType data;
+    // 左右孩子指针
+    struct BiNode *lchild,*rchild;
+}BiNode, *BiTree;
 
-// 手动构建二叉树
-void createBiTreeByManual(BiTree * T) {
-    // 创建根结点
-    * T = (BiTNode*)malloc(sizeof(BiTNode));
+// 手动初始化链表二叉树
+void initBiTree(BiTree *T) {
+    // 申请空间，创建结点
+    *T = (BiNode*)malloc(sizeof(BiNode));
     (*T)->data = 1;
-    // 创建左子树
-    (*T)->leftChild = (BiTNode*)malloc(sizeof(BiTNode));
-    (*T)->leftChild->data = 2;
-    // 创建右子树
-    (*T)->rightChild = (BiTNode*)malloc(sizeof(BiTNode));
-    (*T)->rightChild->data = 3;
-    (*T)->rightChild->leftChild = NULL;
-    (*T)->rightChild->rightChild = NULL;
-    (*T)->leftChild->leftChild = (BiTNode*)malloc(sizeof(BiTNode));
-    (*T)->leftChild->leftChild->data = 4;
-    (*T)->leftChild->rightChild = NULL;
-    (*T)->leftChild->leftChild->leftChild = NULL;
-    (*T)->leftChild->leftChild->rightChild = NULL;
+    (*T)->lchild = (BiNode*)malloc(sizeof(BiNode));
+    (*T)->lchild->data = 2;
+    (*T)->rchild = (BiNode*)malloc(sizeof(BiNode));
+    (*T)->rchild->data = 3;
+    (*T)->rchild->lchild = NULL;
+    (*T)->rchild->rchild = NULL;
+    (*T)->lchild->lchild = (BiNode*)malloc(sizeof(BiNode));
+    (*T)->lchild->lchild->data = 4;
+    (*T)->lchild->rchild = NULL;
+    (*T)->lchild->lchild->lchild = NULL;
+    (*T)->lchild->lchild->rchild = NULL;
 }
 
-// 动态构建二叉树
-int arr[7] = {1,2,3,4,5,6};
-int index = 0;
-void createBiTreeByAuto(BiTree * T) {
-    if (index == 6) {
-        T = NULL;
-        return;
-    }
-    // 创建结点
-    (*T) = (BiTNode*)malloc(sizeof(BiTNode));
-    (*T)->data = arr[1];
-    index++;
-    createBiTreeByAuto(&((*T)->leftChild));
-    createBiTreeByAuto(&((*T)->rightChild));
-}
-// 后序遍历二叉树 释放内存
-void destroyBiTree(BiTree T) {
-    if (T) {
-        destroyBiTree(T->leftChild);
-        destroyBiTree(T->rightChild);
-        free(T);
-    }
-}
-// 前序遍历
-void preOrder(BiTree T) {
-    if (T) {
-        printf("输出:%d", T->data);
-        preOrder(T->leftChild);
-        preOrder(T->rightChild);
-    }
-}
-int main () {
-    BiTree Tree;
-    // createBiTreeByManual(&Tree);
-    createBiTreeByAuto(&Tree);
-    preOrder(Tree);
+// 后序遍历二叉树 左-》右-》根
+// void postOrderTree(BiTree T) {
+//     if (T) {
+//         postOrderTree(T->lchild);
+//         postOrderTree(T->rchild);
+//         printf("%d", T->data);
+//     }
+// }
+int main() {
+    BiTree tree;
+    initBiTree(&tree);
     return 0;
 }
