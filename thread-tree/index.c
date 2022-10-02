@@ -44,8 +44,32 @@ void initThreadTree(BiThrTree T) {
         initThreadTree(T->rchild);
     }
 }
-
+/**
+ * 遍历线索二叉树
+ * T指向头结点
+ * 头结点lchild指向根结点
+ * 头结点rchild指向中序遍历的最后一个结点
+ */
+void inOrderThrTree(BiThrTree T) {
+    // 临时指针
+    BiThrTree p;
+    p = T->lchild;
+    while (p != T)
+    {
+        while(p->LTag == Link) {
+            p = p->lchild;
+            printf("%d", p->data);
+        }
+        while(p->RTag == Thread && p->rchild != T) {
+            p = p->rchild;
+            printf("%d", p->data);
+        }
+        p = p->rchild;
+    }
+}
 int main() {
-    initThreadTree();
+    BiThrTree T;
+    initThreadTree(T);
+    inOrderThrTree(T);
     return 0;
 }
