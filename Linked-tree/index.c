@@ -39,6 +39,22 @@ void postOrderTree(BiTree T) {
         printf("%d", T->data);
     }
 }
+
+// 动态初始化二叉树 利用前序遍历
+void initBiTreeByDyna(BiTree *T) {
+    int num;
+    scanf("%d", &num);
+    // 输入为0，表示无此结点
+    if (num == 0) {
+        *T = NULL;
+    } else {
+        // 创建结点
+        *T = (BiNode*)malloc(sizeof(BiNode));
+        (*T)->data = num;
+        initBiTreeByDyna(&((*T)->lchild));
+        initBiTreeByDyna(&((*T)->rchild));
+    }
+}
 int main() {
     BiTree tree;
     initBiTree(&tree);
