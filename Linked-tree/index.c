@@ -32,13 +32,13 @@ void initBiTree(BiTree *T) {
 }
 
 // 后序遍历二叉树 左-》右-》根
-// void postOrderTree(BiTree T) {
-//     if (T) {
-//         postOrderTree(T->lchild);
-//         postOrderTree(T->rchild);
-//         printf("%d", T->data);
-//     }
-// }
+void postOrderTree(BiTree T) {
+    if (T) {
+        postOrderTree(T->lchild);
+        postOrderTree(T->rchild);
+        printf("%d", T->data);
+    }
+}
 int main() {
     BiTree tree;
     initBiTree(&tree);
