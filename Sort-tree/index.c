@@ -144,6 +144,53 @@ void postOrderRecur(BiTree T) {
         printf("%d", T->data);
     }
 }
+
+/**
+ * 非递归后序遍历二叉树
+ * 在遍历完当前结点的左右孩子之后才访问该结点，需要在当前结点入栈时配备一个标志位，
+ * 当遍历该结点的左孩子时，设置当前结点标志位为0；
+ * 当遍历该结点的右孩子时，设置当前结点标志位为1，入栈。
+ * 这样当遍历完该结点的左右子树并将其出栈时，标志位如果为0，表示该结点的右孩子还没有遍历，
+ * 如果是1，表示该结点的左右孩子都遍历完成，可以访问此结点。
+ */
+typedef struct SNode {
+    int tag;
+    BiTree p;
+}
+void postOrderNoRecur(BiTree T) {
+    // 定义栈
+    SNode a[20];
+    // 临时指针
+    BiTNode *p;
+    // 标记位
+    int tag;
+    SNode sdata;
+    p = T;
+    while(p || top != -1) {
+        while(p) {
+            sdata.p = p;
+            sdata.tag = 0;
+            push(a, sdata);
+            p = p->leftChild;
+        }
+        // 获取栈顶元素
+        sdata = a[top];
+        // 栈顶出栈
+        pop();
+        p = sdata.p;
+        tag = sdata.tag;
+        // tag = 0，该结点还没有遍历它的右孩子
+        if (tag == 0) {
+            sdata.p = p;
+            sdata.tag = 1;
+            push(a, sdata);
+            p = p->rightChild;
+        } else {
+            printf("%d", p->data);
+            p = NULL;
+        }
+    }
+}
 int main() {
     BiTree T;
     preOrderRecur(T);
