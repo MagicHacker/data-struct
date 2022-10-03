@@ -69,6 +69,15 @@ void preOrderNoRecur(BiTree T) {
         }
     }
 }
+
+// 递归中序遍历二叉树
+void inOrderRecur(BiTree T) {
+    if (T) {
+        inOrderRecur(T->leftChild);
+        printf("%d", T->data);
+        inOrderRecur(T->rightChild);
+    }
+}
 int main() {
     BiTree T;
     preOrderRecur(T);
