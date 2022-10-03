@@ -135,6 +135,15 @@ void inOrderNoRecur2(BiTree T) {
     }
 
 }
+
+// 后序递归遍历
+void postOrderRecur(BiTree T) {
+    if (T) {
+        postOrderRecur(T->leftChild);
+        postOrderRecur(T->rightChild);
+        printf("%d", T->data);
+    }
+}
 int main() {
     BiTree T;
     preOrderRecur(T);
