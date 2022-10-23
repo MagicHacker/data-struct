@@ -27,6 +27,7 @@ void insertSort(int arr[], int n) {
         int preIndex = i - 1;
         // 从后向前扫描 3 1
         while (preIndex >= 0 && arr[preIndex] > current) {
+            // 将前一个元素的值复制给挨着的后一个元素，以便插入元素的时候，后续元素向右移动
             arr[preIndex + 1] = arr[preIndex];
             preIndex--;
         }
