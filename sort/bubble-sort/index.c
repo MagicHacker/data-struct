@@ -4,8 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct List {
+    // 动态数组
+    int *data;
+    // 表长度
+    int length;
+    // 表容量
+    int size;
+}List;
 // 冒泡排序
-// 95183742
+
 void bubbleSort1(List *l) {
     for (int i = 0; i < l->length; i++) {
         for (int j = i + 1; j < l->length; j++) {
